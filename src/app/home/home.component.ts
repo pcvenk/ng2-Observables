@@ -32,14 +32,20 @@ export class HomeComponent implements OnInit, OnDestroy {
         observer.next('Second Package');
       }, 4000);
       setTimeout(() => {
-        observer.error('Error was detected');
+        observer.complete();
       }, 5000);
     });
 
     this.observableSubscription = myObservable.subscribe(
-      (data: string) => { console.log(data); },
-      (error: string) => { console.log(error); },
-      () => { console.log('completed'); }
+      (data: string) => {
+        console.log(data);
+        },
+      (error: string) => {
+        console.log(error);
+        },
+      () => {
+        console.log('completed');
+      }
     );
   }
 
